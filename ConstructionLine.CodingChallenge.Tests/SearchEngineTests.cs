@@ -17,7 +17,7 @@ namespace ConstructionLine.CodingChallenge.Tests
                 new Shirt(Guid.NewGuid(), "Blue - Large", Size.Large, Color.Blue),
             };
 
-            var searchEngine = new SearchEngine(shirts);
+            var searchEngine = new SearchEngine(shirts, _shirtSearch, _resultsProcessor);
 
             var searchOptions = new SearchOptions
             {

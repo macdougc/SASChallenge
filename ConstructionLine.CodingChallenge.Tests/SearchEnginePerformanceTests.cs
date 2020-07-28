@@ -20,7 +20,7 @@ namespace ConstructionLine.CodingChallenge.Tests
 
             _shirts = dataBuilder.CreateShirts();
 
-            _searchEngine = new SearchEngine(_shirts);
+            _searchEngine = new SearchEngine(_shirts, _shirtSearch, _resultsProcessor);
         }
 
 

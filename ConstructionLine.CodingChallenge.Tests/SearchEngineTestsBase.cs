@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ConstructionLine.CodingChallenge.Interfaces;
 using NUnit.Framework;
 
 namespace ConstructionLine.CodingChallenge.Tests
 {
     public class SearchEngineTestsBase
     {
+        public readonly IShirtSearch _shirtSearch = new ShirtSearch();
+        public readonly IResultsProcessor _resultsProcessor = new ResultsProcessor();
+
         protected static void AssertResults(List<Shirt> shirts, SearchOptions options)
         {
             Assert.That(shirts, Is.Not.Null);
@@ -39,7 +43,8 @@ namespace ConstructionLine.CodingChallenge.Tests
 
                 var expectedSizeCount = shirts
                     .Count(s => s.Size.Id == size.Id
-                                && (!searchOptions.Colors.Any() || searchOptions.Colors.Select(c => c.Id).Contains(s.Color.Id)));
+                                && (!searchOptions.Colors.Any() || searchOptions.Colors.Select(c => c.Id).Contains(s.Color.Id))
+                                && (!searchOptions.Sizes.Any() || searchOptions.Sizes.Select(c => c.Id).Contains(s.Size.Id)));
 
                 Assert.That(sizeCount.Count, Is.EqualTo(expectedSizeCount), 
                     $"Size count for '{sizeCount.Size.Name}' showing '{sizeCount.Count}' should be '{expectedSizeCount}'");
@@ -58,7 +63,8 @@ namespace ConstructionLine.CodingChallenge.Tests
 
                 var expectedColorCount = shirts
                     .Count(c => c.Color.Id == color.Id  
-                                && (!searchOptions.Sizes.Any() || searchOptions.Sizes.Select(s => s.Id).Contains(c.Size.Id)));
+                                && (!searchOptions.Sizes.Any() || searchOptions.Sizes.Select(s => s.Id).Contains(c.Size.Id))
+                                && (!searchOptions.Colors.Any() || searchOptions.Colors.Select(s => s.Id).Contains(c.Color.Id)));
 
                 Assert.That(colorCount.Count, Is.EqualTo(expectedColorCount),
                     $"Color count for '{colorCount.Color.Name}' showing '{colorCount.Count}' should be '{expectedColorCount}'");
