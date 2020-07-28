@@ -33,7 +33,7 @@ namespace ConstructionLine.CodingChallenge
             // If we have no search items then return the results with all 0
             if (options.Colors.Count == 0 && options.Sizes.Count == 0)
             {
-                _resultsProcessor.AddNotFoundResultEntries(searchResults, Size.All, Color.All);
+                _resultsProcessor.AddNotFoundResultEntries(searchResults);
                 return searchResults;
             }
 
@@ -55,7 +55,7 @@ namespace ConstructionLine.CodingChallenge
                 }
             }
 
-            _resultsProcessor.AddNotFoundResultEntries(searchResults, Size.All, Color.All);
+            _resultsProcessor.AddNotFoundResultEntries(searchResults);
 
             return searchResults;
         }

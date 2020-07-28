@@ -8,10 +8,10 @@ namespace ConstructionLine.CodingChallenge
 {
     public class ResultsProcessor : IResultsProcessor
     {
-        public void AddNotFoundResultEntries(SearchResults results, List<Size> sizes, List<Color> colours)
+        public void AddNotFoundResultEntries(SearchResults results)
         {
             // Add all the count entries for sizes and colours not found
-            foreach(var size in sizes)
+            foreach(var size in Size.All)
             {
                 // If we don't have an entry for this size then add one with 0 count
                 if (!results.SizeCounts.Where(sc => sc.Size.Id.Equals(size.Id)).Any())
@@ -20,7 +20,7 @@ namespace ConstructionLine.CodingChallenge
                 }
             }
 
-            foreach (var colour in colours)
+            foreach (var colour in Color.All)
             {
                 // If we don't have an entry for this size then add one with 0 count
                 if (!results.ColorCounts.Where(sc => sc.Color.Id.Equals(colour.Id)).Any())

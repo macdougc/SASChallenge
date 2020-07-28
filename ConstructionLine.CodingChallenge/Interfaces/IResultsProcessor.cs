@@ -8,6 +8,6 @@ namespace ConstructionLine.CodingChallenge.Interfaces
     {
         void ProcessResults(SearchResults result, SearchResults overallResults);
 
-        void AddNotFoundResultEntries(SearchResults results, List<Size> sizes, List<Color> colours);
+        void AddNotFoundResultEntries(SearchResults results);
     }
 }
